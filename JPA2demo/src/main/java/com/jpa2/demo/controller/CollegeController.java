@@ -27,7 +27,7 @@ import com.jpa2.service.CollegeService;
 @RestController
 @RequestMapping("api.collegeexample.com")
 public class CollegeController {
-
+	//Nishan siriyan 
 	@Autowired
 	private CollegeMapperImpl mapperClass;
 	
