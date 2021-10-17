@@ -3,7 +3,6 @@ package com.jpa2.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
@@ -27,58 +26,56 @@ import com.jpa2.service.CollegeService;
 @RestController
 @RequestMapping("api.collegeexample.com")
 public class CollegeController {
-	//Nishan siriyan 
+	// Nishan siriyan
+	// Manoj Kumar
 	@Autowired
 	private CollegeMapperImpl mapperClass;
-	
+
 	@Lazy
 	@Autowired
 	private CollegeService service;
-	
+
 	@PostMapping
-	public ResponseEntity<CollegeDto> create(@RequestBody College college) {
-		College save=service.addCollege(college);
-		return new ResponseEntity<>(mapperClass.toCollegeDto(save),HttpStatus.OK);
+	public ResponseEntity<CollegeDto> create(@RequestBody final College college) {
+		final College save = service.addCollege(college);
+		return new ResponseEntity<>(mapperClass.toCollegeDto(save), HttpStatus.OK);
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<List<CollegeDto>> retrieveAll(){
-		List<College>findAll=service.displayAll();
-		return  ResponseEntity.ok(mapperClass.entityToDto(findAll));
+	public ResponseEntity<List<CollegeDto>> retrieveAll() {
+		final List<College> findAll = service.displayAll();
+		return ResponseEntity.ok(mapperClass.entityToDto(findAll));
 	}
-	
+
 	@GetMapping("{id}")
-	public ResponseEntity<CollegeDto> readById(@PathVariable int id){
-		Optional<College>collegeOpt=service.getById(id);
-		if(collegeOpt.isPresent()) {
+	public ResponseEntity<CollegeDto> readById(@PathVariable final int id) {
+		final Optional<College> collegeOpt = service.getById(id);
+		if (collegeOpt.isPresent()) {
 			return ResponseEntity.ok(mapperClass.toCollegeDto(collegeOpt.get()));
-		}else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+
 	@GetMapping("college-name")
-	public ResponseEntity<List<CollegeDto>>readByName(@RequestParam String name){
-		List<College> finadAll=service.getbyName(name);
+	public ResponseEntity<List<CollegeDto>> readByName(@RequestParam final String name) {
+		final List<College> finadAll = service.getbyName(name);
 		return ResponseEntity.ok(mapperClass.entityToDto(finadAll));
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<CollegeDto> update(@RequestBody College college){
-		College save=service.updateCollege(college);
-		return new ResponseEntity<>(mapperClass.toCollegeDto(save),HttpStatus.OK);
+	public ResponseEntity<CollegeDto> update(@RequestBody final College college) {
+		final College save = service.updateCollege(college);
+		return new ResponseEntity<>(mapperClass.toCollegeDto(save), HttpStatus.OK);
 	}
-	
-	 @DeleteMapping("{id}")
-	 public ResponseEntity<String> delete(@PathVariable int id) {
-		 return ResponseEntity.ok(service.deletebyId(id));
-	 }
-	 
-	 @GetMapping("department")
-		public ResponseEntity<List<Department>> retrieveDepartment(){
-			return  ResponseEntity.ok(service.getDepartment());
-		}
-	 
-	
-	
+
+	@DeleteMapping("{id}")
+	public ResponseEntity<String> delete(@PathVariable final int id) {
+		return ResponseEntity.ok(service.deletebyId(id));
+	}
+
+	@GetMapping("department")
+	public ResponseEntity<List<Department>> retrieveDepartment() {
+		return ResponseEntity.ok(service.getDepartment());
+	}
+
 }
