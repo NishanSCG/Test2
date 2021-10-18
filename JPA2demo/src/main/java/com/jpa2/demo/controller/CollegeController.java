@@ -28,6 +28,8 @@ import com.jpa2.service.CollegeService;
 public class CollegeController {
 	// Nishan siriyan
 	// Manoj Kumar
+	// Nishan siriyan
+	// Manoj Kumar
 	@Autowired
 	private CollegeMapperImpl mapperClass;
 
