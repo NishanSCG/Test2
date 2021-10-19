@@ -32,6 +32,12 @@ public class CollegeController {
 	// Nishan siriyan
 	// Manoj Kumar
 	// Nihal Kunder
+	// Nishan siriyan
+	// Manoj Kumar
+	// Nihal Kunder
+	// Nishan siriyan
+	// Manoj Kumar
+	// Nihal Kunder
 	@Autowired
 	private CollegeMapperImpl mapperClass;
 
